@@ -1,0 +1,9 @@
+<h2>Select company to work on </h2>
+
+
+{{#each companies as |grant|}}
+    <form action="/company" method="post">
+        <input type="hidden" name="grantId" value="{{grant.id}}">
+        <input type="submit" value="{{grant.name}}">
+    </form>
+{{/each}}

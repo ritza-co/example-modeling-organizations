@@ -1,0 +1,20 @@
+<h2>Sales for {{company}}</h2>
+
+
+
+<!-- create a sales table -->
+<table>
+    <tr>
+        <th>Product</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Total</th>
+    </tr>
+    {{#each data as |sale|}}
+    <tr>
+        <td>{{sale.product}}</td>
+        <td>{{sale.price}}</td>
+        <td>{{sale.quantity}}</td>
+        <td>{{sale.total}}</td>
+    </tr>
+    {{/each}}

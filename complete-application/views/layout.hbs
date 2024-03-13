@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            flex-direction: row;
+            /* This ensures children are laid out in a row */
+            width: 100%;
+        }
+
+        #sidebar {
+            width: 250px;
+            /* Adjust the sidebar width as needed */
+            background: #white;
+            color: darkgray;
+            height: 100%;
+        }
+
+        #sidebar hr {
+            margin: 20px;
+            border: 0;
+            border-top: 1px solid #E2E8F0;
+        }
+
+        #content {
+            flex-grow: 1;
+            /* This makes the content area take up the remaining space */
+            background: #EBEFF2;
+        }
+
+        #menu-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: blue;
+        }
+
+        #user-profile {
+            text-align: center;
+            margin-bottom: 20px;
+            margin-top: 80px;
+        }
+
+        #profile-pic {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 5px;
+        }
+
+        #user-name {
+            /* Additional styling for the user name text */
+        }
+
+        #company-logo {
+            height: 80px;
+            margin-bottom: 5px;
+        }
+
+        .selected {
+            background-color: #0e9b2c;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="sidebar">
+        <div id="company-profile">
+            <img src="/images/{{company}}.png" alt="{{company}} Logo" id="company-logo">
+            <p id="company-name">{{company}}</p>
+
+        </div>
+
+        <div id="user-profile">
+            <img src="{{user.imageUrl}}" alt="User Profile Picture" id="profile-pic">
+            <p id="user-name">{{user.firstName}} {{user.lastName}}</p>
+        </div>
+
+        <hr />
+        <ul>
+            <li><a href="/users">Users</a></li>
+            <li><a href="/reports">Reports</a></li>
+            <li><a href="/admin">Admin</a></li>
+            <li><a href="/sales">Sales</a></li>
+            <li><a href="/billing">Billing</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+    </div>
+    <div id="content">
+        <div id="menu-bar">
+            <div class="left-menu">
+                <!-- Other menu items here -->
+            </div>
+            <div class="user-profile">
+                <img src="https://via.placeholder.com/50" alt="User profile" />
+                User profile
+            </div>
+        </div>
+
+        <div>
+            {{{body}}}
+        </div>
+
+    </div>
+</body>
+
+</html>
+

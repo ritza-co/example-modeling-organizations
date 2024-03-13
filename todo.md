@@ -28,4 +28,4 @@
   - [ ] Add profile pics to github and reference from there
 
 
-- [ ] Update "Changebank" logo on FusionAuth signin to be Pied Piper (or whatever the company name is)
+- [ ] Update "Changebank" logo on FusionAuth signin to be AwesomeCRM (or whatever the company name is)
