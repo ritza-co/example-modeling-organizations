@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{title}}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <style>
         body,
         html {
@@ -16,6 +17,7 @@
             flex-direction: row;
             /* This ensures children are laid out in a row */
             width: 100%;
+            font-family: Inter, -apple-system, system-ui, BlinkMacSystemFont, Arial, sans-serif;
         }
 
         #sidebar {
@@ -24,12 +26,46 @@
             background: #white;
             color: darkgray;
             height: 100%;
+            border-right: 1px solid #E2E8F0;
         }
 
         #sidebar hr {
             margin: 20px;
             border: 0;
             border-top: 1px solid #E2E8F0;
+        }
+
+        #sidebar ul {
+            list-style: none;
+            margin-right: 20px;
+            padding: 0;
+        }
+
+        #sidebar ul li {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
+            cursor: pointer;
+        }
+
+        #sidebar ul li:hover {
+            background-color: #E2E8F0;
+        }
+
+        #sidebar ul .selected {
+            background-color: #E2E8F0;
+        }
+
+        #sidebar ul li a {
+            text-decoration: none;
+            color: black;
+            margin-left: 5px;
+        }
+
+        #sidebar ul li i {
+            margin-left: 20px;
+            color: black;
         }
 
         #content {
@@ -42,13 +78,14 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: blue;
+            background: #EBEFF2;
+            border-bottom: 1px solid #aeb3b9;
         }
 
         #user-profile {
             text-align: center;
-            margin-bottom: 20px;
-            margin-top: 80px;
+            margin-bottom: 40px;
+            margin-top: 20px;
         }
 
         #profile-pic {
@@ -60,16 +97,20 @@
 
         #user-name {
             /* Additional styling for the user name text */
+            color: black;
+            font-weight: bold;
+            font-size: smaller;
         }
 
+        #company-profile {
+            margin-top: 20px;
+        }
         #company-logo {
+            margin-left: 20px;
             height: 80px;
-            margin-bottom: 5px;
+            margin-bottom: 0px;
         }
 
-        .selected {
-            background-color: #0e9b2c;
-        }
     </style>
 </head>
 
@@ -77,23 +118,22 @@
     <div id="sidebar">
         <div id="company-profile">
             <img src="/images/{{company}}.png" alt="{{company}} Logo" id="company-logo">
-            <p id="company-name">{{company}}</p>
-
         </div>
 
         <div id="user-profile">
             <img src="{{user.imageUrl}}" alt="User Profile Picture" id="profile-pic">
-            <p id="user-name">{{user.firstName}} {{user.lastName}}</p>
+            <div id="user-name">{{user.firstName}} {{user.lastName}}</div>
         </div>
 
         <hr />
         <ul>
-            <li><a href="/users">Users</a></li>
-            <li><a href="/reports">Reports</a></li>
-            <li><a href="/admin">Admin</a></li>
-            <li><a href="/sales">Sales</a></li>
-            <li><a href="/billing">Billing</a></li>
-            <li><a href="/logout">Logout</a></li>
+            <li class="selected"><i class="bi-house-door"></i><a href="/home">Home</a></li>
+            <li><i class="bi-people"></i><a href="/users">Users</a></li>
+            <li><i class="bi-file-bar-graph"></i><a href="/reports">Reports</a></li>
+            <li><i class="bi-suitcase-lg"></i><a href="/admin">Admin</a></li>
+            <li><i class="bi-currency-dollar"></i><a href="/sales">Sales</a></li>
+            <li><i class="bi-card-list"></i><a href="/billing">Billing</a></li>
+            <li><i class="bi-escape"></i><a href="/logout">Logout</a></li>
         </ul>
     </div>
     <div id="content">

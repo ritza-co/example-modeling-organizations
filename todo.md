@@ -26,7 +26,7 @@
   - [x] Add URL for profile picture
   - [x] Add other users 
   - [x] Add profile pics to github and reference from there
-  - [] Try rebuild docker and check users / images / changes. 
+  - [x] Try rebuild docker and check users / images / changes. 
 
 
 - [ ] Update "Changebank" logo on FusionAuth signin to be AwesomeCRM (or whatever the company name is)
