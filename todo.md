@@ -23,9 +23,10 @@
   - [ ] Logout link to point to FusionAuth logout (check logout link in FA is pointing back to the app)
 
 - [ ] Kickstart updates
-  - [ ] Add URL for profile picture
-  - [ ] Add other users 
-  - [ ] Add profile pics to github and reference from there
+  - [x] Add URL for profile picture
+  - [x] Add other users 
+  - [x] Add profile pics to github and reference from there
+  - [] Try rebuild docker and check users / images / changes. 
 
 
 - [ ] Update "Changebank" logo on FusionAuth signin to be AwesomeCRM (or whatever the company name is)

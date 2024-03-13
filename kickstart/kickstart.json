@@ -172,7 +172,8 @@
           "email": "#{userEmail}",
           "firstName": "Richard",
           "lastName": "Hendricks",
-          "password": "#{userPassword}"
+          "password": "#{userPassword}", 
+          "imageUrl": "https://github.com/ritza-co/example-modeling-organizations/blob/main/complete-application/public/images/richard-hendricks-small-profile.png?raw=true"
         },
         "registration": {
           "applicationId": "#{applicationId}",
@@ -191,7 +192,8 @@
           "email": "#{userErlichEmail}",
           "firstName": "Erlich",
           "lastName": "Bachman",
-          "password": "#{userPassword}"
+          "password": "#{userPassword}",
+          "imageUrl": "https://github.com/ritza-co/example-modeling-organizations/blob/main/complete-application/public/images/erlich-bachman-small-profile.png?raw=true"
         },
         "registration": {
           "applicationId": "#{applicationId}",
