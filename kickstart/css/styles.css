@@ -1,13 +1,13 @@
 :root {
     --main-text-color: #424242;
-    --main-accent-color: #096324;
+    --main-accent-color: #000643;
     --input-background: #fbfbfb;
     --body-background: #f7f7f7;
     --tooltip-background: #e2e2e2;
     --error-color: #ff0000;
     --error-background: #ffe8e8;
     --border-color: #dddddd;
-    --logo-url: url(https://fusionauth.io/cdn/samplethemes/changebank/changebank.svg);
+    --logo-url: url(https://github.com/ritza-co/example-modeling-organizations/blob/main/complete-application/public/images/awesomeCRM.png?raw=true);
     --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   }
   body {
