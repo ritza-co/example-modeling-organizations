@@ -20,9 +20,12 @@ router.get('/', function(req, res, next) {
       user: user.user, 
       companies: companies, 
       company: req.session.selectedGrant.entity.name,
-      selectedGrant: req.session.selectedGrant});
+      logoutURL: req.logoutURL,
+      selectedGrant: req.session.selectedGrant
+    });
   }
 });
+
 
 
 router.post('/company', ensureLoggedIn('/login'), function(req, res, next) {

@@ -181,13 +181,13 @@
 
         <hr />
         <ul>
-            <li class="selected"><i class="bi-house-door"></i><a href="/">Home</a></li>
+            <li><i class="bi-house-door"></i><a href="/">Home</a></li>
             <li><i class="bi-people"></i><a href="/users">Users</a></li>
             <li><i class="bi-file-bar-graph"></i><a href="/reports">Reports</a></li>
             <li><i class="bi-suitcase-lg"></i><a href="/admin">Admin</a></li>
             <li><i class="bi-currency-dollar"></i><a href="/sales">Sales</a></li>
             <li><i class="bi-card-list"></i><a href="/billing">Billing</a></li>
-            <li><i class="bi-escape"></i><a href="/logout">Logout</a></li>
+            <li><i class="bi-escape"></i><a href="{{logoutURL}}">Logout</a></li>
         </ul>
     </div>
     <div id="content">
@@ -207,5 +207,28 @@
 
     </div>
 </body>
+
+<script>
+
+/*
+    This script adds a .selected class to the <li> element of the current page's link in the sidebar.
+    It uses the window.location.pathname property to get the path part of the current page's URL.
+    It then compares this path with the path of each link in the sidebar.
+    If the paths match, the .selected class is added to the parent <li> element of the link.
+
+*/
+document.addEventListener('DOMContentLoaded', function() {
+    const links = document.querySelectorAll('#sidebar a');
+    const currentPath = window.location.pathname; // Get the path part of the current page's URL
+    console.log(currentPath);
+    links.forEach(link => {
+        const linkPath = link.pathname; // Get the path part of the link's URL
+        console.log(linkPath);
+        if (linkPath === currentPath) {
+            link.parentElement.classList.add('selected'); // Add .selected class to parent <li> element
+        }
+    });
+});
+</script>
 
 </html>

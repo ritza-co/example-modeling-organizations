@@ -19,6 +19,7 @@ const FUSIONAUTH_URL = "http://localhost:9011";
 const FUSIONAUTH_APP_CLIENTID = "e9fdb985-9173-4e01-9d73-ac2d60d1dc8e";
 const FUSIONAUTH_APP_CLIENT_SECRET = "super-secret-secret-that-should-be-regenerated-for-production";
 const FUSIONAUTH_API_KEY = "33052c8a-c283-4e96-9d2a-eb1215c69f8f-not-for-prod";
+const FUSIONAUTH_LOGOUT_URL = "http://localhost:9011/oauth2/logout?client_id=e9fdb985-9173-4e01-9d73-ac2d60d1dc8e&redirect_uri=http://localhost:3000";
 
 var app = express();
 
@@ -35,6 +36,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({ secret: "TOPSECRET" }));
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(function (req, res, next) {
+  req.logoutURL = FUSIONAUTH_LOGOUT_URL;
+  next();
+});
+
 
 
 passport.use(

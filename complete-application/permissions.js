@@ -4,7 +4,12 @@ function checkGrantPermissions(allowedPermissions) {
         const permissions = selectedGrant.permissions;
         const hasPermission = allowedPermissions.some(perm => permissions.includes(perm));
         if (!hasPermission) {
-            return res.render('no-permission', { title: 'No Permission' })
+            return res.render('no-permission', {
+                title: 'No Permission',
+                company: req.session.selectedGrant.entity.name,
+                logoutURL: req.logoutURL,
+                selectedGrant: req.session.selectedGrant
+            });
         }
         next();
     }

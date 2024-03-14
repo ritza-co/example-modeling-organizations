@@ -15,7 +15,9 @@ router.get('/', checkGrantPermissions(['Admin', 'Sales', 'Viewer']), function (r
         title: companyName + ' - Sales',
         data: data, 
         user: req.user.user,
-        company: companyName
+        company: req.session.selectedGrant.entity.name,
+        logoutURL: req.logoutURL,
+        selectedGrant: req.session.selectedGrant
     });
 });
 
