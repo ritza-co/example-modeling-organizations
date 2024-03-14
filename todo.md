@@ -15,12 +15,20 @@
   - [x] Add in style sheet from getting started guide
   - [x] Add login page
   - [x] Add Select Company page
-- [ ] Styles
-  - [ ] Size for company logo
-  - [ ] Sidebar link icons
+- [x] Styles
+  - [x] Size for company logo
+  - [x] Sidebar link icons
+  - [x] Clean up stylesheet
+  - [x] Styling for table data
+  - [ ] Update "Changebank" logo on FusionAuth signin to be AwesomeCRM (or whatever the company name is)
 - [ ] Functionality
+  - [x] Add Admin page
   - [ ] Add user management page
-  - [ ] Logout link to point to FusionAuth logout (check logout link in FA is pointing back to the app)
+  - [x] Logout link to point to FusionAuth logout (check logout link in FA is pointing back to the app)
+  - [ ] Add POST routes for: 
+    - [ ] Billing
+    - [ ] Sales
+    - [ ] Reports
 
 - [ ] Kickstart updates
   - [x] Add URL for profile picture
@@ -29,4 +37,4 @@
   - [x] Try rebuild docker and check users / images / changes. 
 
 
-- [ ] Update "Changebank" logo on FusionAuth signin to be AwesomeCRM (or whatever the company name is)
+

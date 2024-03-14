@@ -14,6 +14,7 @@ var usersRouter = require('./routes/users');
 var salesRouter = require('./routes/sales');
 var billingRouter = require('./routes/billing');
 var reportsRouter = require('./routes/reports');
+var adminRouter = require('./routes/admin');
 
 const FUSIONAUTH_URL = "http://localhost:9011";
 const FUSIONAUTH_APP_CLIENTID = "e9fdb985-9173-4e01-9d73-ac2d60d1dc8e";
@@ -110,6 +111,7 @@ app.use('/users', ensureLoggedIn('/login'), usersRouter);
 app.use('/sales', ensureLoggedIn('/login'), salesRouter);
 app.use('/billing', ensureLoggedIn('/login'), billingRouter);
 app.use('/reports', ensureLoggedIn('/login'), reportsRouter);
+app.use('/admin', ensureLoggedIn('/login'), adminRouter);
 
 app.get('/logout', function (req, res, next) {
   req.session.destroy();
