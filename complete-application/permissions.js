@@ -7,6 +7,7 @@ function checkGrantPermissions(allowedPermissions) {
             return res.render('no-permission', {
                 title: 'No Permission',
                 company: req.session.selectedGrant.entity.name,
+                user: req.user.user,
                 logoutURL: req.logoutURL,
                 selectedGrant: req.session.selectedGrant
             });

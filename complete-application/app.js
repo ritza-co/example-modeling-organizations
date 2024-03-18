@@ -8,6 +8,9 @@ var passport = require("passport");
 var OAuth2Strategy = require("passport-oauth2").Strategy;
 var session = require("express-session");
 const { ensureLoggedIn } = require('connect-ensure-login');
+const dotenv = require('dotenv');
+dotenv.config();
+
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -16,11 +19,11 @@ var billingRouter = require('./routes/billing');
 var reportsRouter = require('./routes/reports');
 var adminRouter = require('./routes/admin');
 
-const FUSIONAUTH_URL = "http://localhost:9011";
-const FUSIONAUTH_APP_CLIENTID = "e9fdb985-9173-4e01-9d73-ac2d60d1dc8e";
-const FUSIONAUTH_APP_CLIENT_SECRET = "super-secret-secret-that-should-be-regenerated-for-production";
-const FUSIONAUTH_API_KEY = "33052c8a-c283-4e96-9d2a-eb1215c69f8f-not-for-prod";
-const FUSIONAUTH_LOGOUT_URL = "http://localhost:9011/oauth2/logout?client_id=e9fdb985-9173-4e01-9d73-ac2d60d1dc8e&redirect_uri=http://localhost:3000";
+const FUSIONAUTH_URL = process.env.FUSIONAUTH_URL;
+const FUSIONAUTH_APP_CLIENTID = process.env.FUSIONAUTH_APP_CLIENTID;
+const FUSIONAUTH_APP_CLIENT_SECRET = process.env.FUSIONAUTH_APP_CLIENT_SECRET;
+const FUSIONAUTH_API_KEY = process.env.FUSIONAUTH_API_KEY;
+const FUSIONAUTH_LOGOUT_URL = process.env.FUSIONAUTH_LOGOUT_URL;
 
 var app = express();
 
@@ -30,7 +33,7 @@ app.set('view engine', 'hbs');
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 

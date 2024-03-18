@@ -23,7 +23,7 @@
     width: 80%;
     max-width: 20rem;
     height: 3.5rem;
-    margin: 0 auto 3rem auto;
+    margin: 0it  auto 3rem auto;
     background-image: var(--logo-url);
     background-size: contain;
     background-position: center;
