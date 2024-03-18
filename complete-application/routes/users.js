@@ -36,8 +36,8 @@ router.get('/', checkGrantPermissions(['Admin']), async function (req, res, next
     });
     const grants = await grantsResponse.json();
     // Only include the grants for the selected entity (company)
-
     userGrants = grants.grants.find(grant => grant.entity.id === req.session.selectedGrant.entity.id);
+
     // make a list of all permissions, and mark the ones the user has:
     user.permissions = allPermissions.map(perm => {
       return {
@@ -61,8 +61,77 @@ router.get('/', checkGrantPermissions(['Admin']), async function (req, res, next
 });
 
 
+/*
+  The post request is called when the user clicks the save button on the users page. 
+  The request body contains the permissions for all users. 
+  The permissions are updated for each user, and then the user is redirected back to the users page. 
+  The post object should have the following structure:
+  {
+    users: [
+      {
+        id: 'user-id',
+        permissions: [
+          {
+            permissionId: 'permission-id',
+            permissionName: "permission-name",
+            permissionStatus: "true"
+          }
+        ]
+      }
+    ]
+  }
+*/
 router.post('/', checkGrantPermissions(['Admin']), async function (req, res, next) {
   console.log(JSON.stringify(req.body));
+
+  // update the grants for all users: 
+
+  req.body.forEach(async user => {
+
+    // collect all the names of the perms that are "true" (must be added):
+    const permissionsToEnable = user.permissions.filter(perm => perm.permissionStatus === "true").map(perm => perm.permissionName);
+
+
+    const addedGrantsResponse = await fetch(`${FUSIONAUTH_URL}/api/entity/${req.session.selectedGrant.entity.id}/grant`, {
+      headers: {
+        method: 'POST',
+        Authorization: FUSIONAUTH_API_KEY,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        "grant": {
+          "permissions": permissionsToEnable,
+          "userId": user.userId
+        }
+      })
+    });
+
+    if (!addedGrantsResponse.ok) {
+      console.error('Error adding grants for user', user.userId);
+    }
+
+    // collect all the names of the perms that are "false" (must be removed):
+    const permissionsToDisable = user.permissions.filter(perm => perm.permissionStatus === "false").map(perm => perm.permissionName);
+
+    const removedGrantsResponse = await fetch(`${FUSIONAUTH_URL}/api/entity/${req.session.selectedGrant.entity.id}/grant`, {
+      headers: {
+        method: 'DELETE',
+        Authorization: FUSIONAUTH_API_KEY,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        "grant": {
+          "permissions": permissionsToDisable,
+          "userId": user.userId
+        }
+      })
+    });
+
+    if (!removedGrantsResponse.ok) {
+      console.error('Error removing grants for user', user.userId);
+    }
+  });
+
   res.redirect('/users');
 });
 

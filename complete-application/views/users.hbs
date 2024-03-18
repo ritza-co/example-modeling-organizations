@@ -23,6 +23,8 @@
                     <li>
                         <input type="hidden" name="users[{{userIndex}}][permissions][{{permIndex}}][permissionId]"
                             value="{{perm.permission.id}}" />
+                        <input type ="hidden" name="users[{{userIndex}}][permissions][{{permIndex}}][permissionName]"
+                            value="{{perm.permission.name}}"/>
                         <input type="hidden" name="users[{{userIndex}}][permissions][{{permIndex}}][permissionState]"/>
                         <input type="checkbox" name="users[{{userIndex}}][permissions][{{permIndex}}][permissionState]"
                             {{#if perm.hasPermission}} checked {{/if}}>
