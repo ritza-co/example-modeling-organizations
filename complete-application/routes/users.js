@@ -10,17 +10,54 @@ const FUSIONAUTH_APP_CLIENT_SECRET = process.env.FUSIONAUTH_APP_CLIENT_SECRET;
 const FUSIONAUTH_API_KEY = process.env.FUSIONAUTH_API_KEY;
 
 /* GET users listing. */
-//?applicationId=${FUSIONAUTH_APP_CLIENTID}
-router.get('/', checkGrantPermissions(['Admin']), async function (req, res, next) {
+router.get('/', checkGrantPermissions(['Admin', 'Viewer']), async function (req, res, next) {
 
-  var queryString = querystring.stringify({ queryString: '{"bool":{"must":[{"nested":{"path":"registrations","query":{"bool":{"must":[{"match":{"registrations.applicationId":"e9fdb985-9173-4e01-9d73-ac2d60d1dc8e"}}]}}}}]}}' });
-  queryString = 'queryString=*';
 
-  const request = await fetch(`${FUSIONAUTH_URL}/api/user/search?${queryString}`, {
-    headers: {
-      'Method': 'GET',
-      'Authorization': FUSIONAUTH_API_KEY,
+  // This big search query get all users that have a registration for the FusionAuth Application (don't want cross application / tenant users. )
+  var elasticQuery = {
+    "bool" : {
+      "must" : [ {
+        "nested" : {
+          "path" : "registrations",
+          "query" : {
+            "bool" : {
+              "must" : [ {
+                "match" : {
+                  "registrations.applicationId" : "e9fdb985-9173-4e01-9d73-ac2d60d1dc8e"
+                }
+              } ]
+            }
+          }
+        }
+      } ]
     }
+  };
+
+  elasticQuery = JSON.stringify(elasticQuery);
+
+  var fullSearchQuery = {
+    "search": {
+      "numberOfResults": 50,
+      "query": elasticQuery,
+      "sortFields": [
+        {
+          "missing": "_first",
+          "name": "email",
+          "order": "asc"
+        }
+      ],
+      "startRow": 0
+    }
+  };
+
+
+  const request = await fetch(`${FUSIONAUTH_URL}/api/user/search`, {
+    method: 'POST',
+    headers: {
+      'Authorization': FUSIONAUTH_API_KEY,
+      'Content-Type': 'application/json'
+    }, 
+    body: JSON.stringify(fullSearchQuery)
   });
 
   const results = await request.json();

@@ -23,7 +23,8 @@ router.get('/', checkGrantPermissions(['Admin', 'Sales', 'Viewer']), function (r
 
 
 router.post('/', checkGrantPermissions(['Admin', 'Sales']), function (req, res, next) {
-    res.send('respond with a resource');
+    
+    res.redirect('/sales');
 });
 
 

@@ -26,6 +26,8 @@
   - [ ] Add user management page
   - [x] Logout link to point to FusionAuth logout (check logout link in FA is pointing back to the app)
   - [ ] Add POST routes for: 
+    - [ ] Users Permissions
+    - [ ] User Grants
     - [ ] Billing
     - [ ] Sales
     - [ ] Reports
