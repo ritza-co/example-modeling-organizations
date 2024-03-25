@@ -1,6 +1,7 @@
-var express = require('express');
-var router = express.Router();
-var checkGrantPermissions = require('../permissions');
+const express = require('express');
+const router = express.Router();
+const checkGrantPermissions = require('../permissions');
+const fs = require('fs');
 
 const billingData = require('../data/billing.json');
 
@@ -23,7 +24,10 @@ router.get('/', checkGrantPermissions(['Admin', 'Billing', 'Viewer']), function 
 
 
 router.post('/', checkGrantPermissions(['Admin', 'Billing']), function (req, res, next) {
-    res.send('respond with a resource');
+    const companyName = req.session.selectedGrant.entity.name;
+    billingData[companyName].push(req.body);
+    fs.writeFileSync('data/billing.json', JSON.stringify(billingData, null, 2));
+    res.redirect('/billing');
 });
 
 

@@ -1,5 +1,7 @@
 :root {
-    --primary-color: #3C495D;
+    --text-color: #3C495D;
+    --primary-color: #000643;
+    --primary-color-lighten: #0919c8;
     --secondary-color: #E2E8F0;
     --tertiary-color: #EBEFF2;
     --quaternary-color: #aeb3b9;
@@ -16,7 +18,55 @@ html {
     flex-direction: row;
     width: 100%;
     font-family: Inter, -apple-system, system-ui, BlinkMacSystemFont, Arial, sans-serif;
-    color: var(--primary-color);
+    color: var(--text-color);
+}
+
+.right-align {
+    text-align: right;
+}
+
+.left-align {
+    text-align: left;
+}
+
+.input-form form {
+    width: 60%;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.input-form form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.input-form form input {
+    width: calc(100% - 20px);
+    font-size: larger;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    height: 50px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.button-lg {
+    display: inline-block;
+    width: auto; /* Adjusted width to fit content */
+    padding: 15px 30px; /* Increased padding for bigger button */
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+.button-lg:hover {
+    background-color: var(--primary-color-lighten);
 }
 
 #sidebar {
@@ -189,7 +239,7 @@ table td {
 }
 
 table th {
-    background-color: var(--primary-color);
+    background-color: var(--text-color);
     color: var(--white-color);
 }
 

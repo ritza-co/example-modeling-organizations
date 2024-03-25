@@ -1,6 +1,7 @@
-var express = require('express');
-var router = express.Router();
-var checkGrantPermissions = require('../permissions');
+const express = require('express');
+const router = express.Router();
+const checkGrantPermissions = require('../permissions');
+const fs = require('fs');
 
 const salesData = require('../data/sales.json');
 
@@ -23,7 +24,12 @@ router.get('/', checkGrantPermissions(['Admin', 'Sales', 'Viewer']), function (r
 
 
 router.post('/', checkGrantPermissions(['Admin', 'Sales']), function (req, res, next) {
-    
+    // Get the data from the request body, and add the new row to the data file
+    const companyName = req.session.selectedGrant.entity.name;
+    req.body.total = req.body.price * req.body.quantity;
+    salesData[companyName].push(req.body);
+    // Save the data to the file
+    fs.writeFileSync('data/sales.json', JSON.stringify(salesData, null, 2));
     res.redirect('/sales');
 });
 

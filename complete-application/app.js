@@ -11,6 +11,8 @@ const { ensureLoggedIn } = require('connect-ensure-login');
 const dotenv = require('dotenv');
 dotenv.config();
 
+const checkGrantPermissions = require('./permissions');
+
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');

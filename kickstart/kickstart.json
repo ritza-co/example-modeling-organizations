@@ -11,11 +11,11 @@
     "adminUserId": "00000000-0000-0000-0000-000000000001",
     "userEmail": "richard@example.com",
     "userPassword": "password",
-    "userUserId": "00000000-0000-0000-0000-111111111111", 
+    "userRichardId": "00000000-0000-0000-0000-111111111111", 
     "userErlichEmail": "erlich@example.com",
-    "userErlichUserId": "00000000-0000-0000-0000-222222222222",
+    "userErlichId": "00000000-0000-0000-0000-222222222222",
     "userJaredEmail": "jared@example.com",
-    "userJaredUserId": "00000000-0000-0000-0000-333333333333",
+    "userJaredId": "00000000-0000-0000-0000-333333333333",
     "customerEntityTypeId": "00000000-0000-0000-0000-000000000005",
     "entityIdPiedPiper": "00000000-0000-0000-0000-000000000006",
     "entityIdHooli": "00000000-0000-0000-0000-000000000007", 
@@ -165,7 +165,7 @@
     },
     {
       "method": "POST",
-      "url": "/api/user/registration/#{userUserId}",
+      "url": "/api/user/registration/#{userRichardId}",
       "body": {
         "user": {
           "birthDate": "1985-11-23",
@@ -173,7 +173,7 @@
           "firstName": "Richard",
           "lastName": "Hendricks",
           "password": "#{userPassword}", 
-          "imageUrl": "https://github.com/ritza-co/example-modeling-organizations/blob/main/complete-application/public/images/richard-hendricks-small-profile.png?raw=true"
+          "imageUrl": "http://localhost:3000/images/richard-hendricks-small-profile.png"
         },
         "registration": {
           "applicationId": "#{applicationId}",
@@ -185,7 +185,7 @@
     },
     {
       "method": "POST",
-      "url": "/api/user/registration/#{userErlichUserId}",
+      "url": "/api/user/registration/#{userErlichId}",
       "body": {
         "user": {
           "birthDate": "1970-01-01",
@@ -193,7 +193,7 @@
           "firstName": "Erlich",
           "lastName": "Bachman",
           "password": "#{userPassword}",
-          "imageUrl": "https://github.com/ritza-co/example-modeling-organizations/blob/main/complete-application/public/images/erlich-bachman-small-profile.png?raw=true"
+          "imageUrl": "http://localhost:3000/images/erlich-bachman-small-profile.png"
         },
         "registration": {
           "applicationId": "#{applicationId}",
@@ -205,14 +205,15 @@
     },
     {
       "method": "POST",
-      "url": "/api/user/registration/#{userJaredUserId}",
+      "url": "/api/user/registration/#{userJaredId}",
       "body": {
         "user": {
           "birthDate": "1980-01-01",
           "email": "#{userJaredEmail}",
           "firstName": "Jared",
           "lastName": "Dunn",
-          "password": "#{userPassword}"
+          "password": "#{userPassword}",
+          "imageUrl": "http://localhost:3000/images/jared-dunn-small-profile.png"
         },
         "registration": {
           "applicationId": "#{applicationId}",
@@ -230,7 +231,31 @@
           "permissions": [
             "Admin"
           ],
-          "userId": "#{userUserId}"
+          "userId": "#{userRichardId}"
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "url": "/api/entity/#{entityIdHooli}/grant",
+      "body": {
+        "grant": {
+          "permissions": [
+            "Admin"
+          ],
+          "userId": "#{userJaredId}"
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "url": "/api/entity/#{entityIdAviato}/grant",
+      "body": {
+        "grant": {
+          "permissions": [
+            "Admin"
+          ],
+          "userId": "#{userErlichId}"
         }
       }
     },
@@ -242,7 +267,7 @@
           "permissions": [
             "Sales"
           ],
-          "userId": "#{userUserId}"
+          "userId": "#{userRichardId}"
         }
       }
     },
@@ -255,7 +280,7 @@
             "Billing",
             "Reports"
           ],
-          "userId": "#{userUserId}"
+          "userId": "#{userRichardId}"
         }
       }
     },
@@ -265,7 +290,7 @@
       "body": {
         "sourceThemeId": "75a068fd-e94b-451a-9aeb-3ddb9a3b5987",
         "theme": {
-          "name": "ChangeBank theme"
+          "name": "AwesomeCRM theme"
         }
       }
     },
@@ -283,15 +308,7 @@
       "url": "/api/tenant/#{defaultTenantId}",
       "body": {
         "tenant": {
-          "themeId": "#{newThemeId}", 
-          "eventConfiguration": {
-            "events":{ 
-              "user.login.success":{
-                "enabled": true,
-                "transactionType": "AbsoluteMajority"
-              }
-            }
-          }
+          "themeId": "#{newThemeId}"
         }
       }
     }
