@@ -1,0 +1,16 @@
+{
+  "Hooli": {
+    "spam": false,
+    "followups": false,
+    "buzzwords": false
+  },
+  "Pied Piper": {
+    "spam": "true",
+    "followups": "true"
+  },
+  "Aviato": {
+    "spam": false,
+    "followups": false,
+    "buzzwords": false
+  }
+}

@@ -1,7 +1,9 @@
-var express = require('express');
-var router = express.Router();
-var checkGrantPermissions = require('../permissions');
+const express = require('express');
+const router = express.Router();
+const fs = require('fs').promises;
+const checkGrantPermissions = require('../permissions');
 
+const adminData = require('../data/admin.json');
 
 router.get('/', checkGrantPermissions(['Admin']), function (req, res, next) {
 
@@ -13,13 +15,19 @@ router.get('/', checkGrantPermissions(['Admin']), function (req, res, next) {
         user: req.user.user,
         company: req.session.selectedGrant.entity.name,
         logoutURL: req.logoutURL,
-        selectedGrant: req.session.selectedGrant
+        selectedGrant: req.session.selectedGrant, 
+        data: adminData[companyName]
     });
 });
 
 
-router.post('/', checkGrantPermissions(['Admin']), function (req, res, next) {
-    res.send('respond with a resource');
+router.post('/', checkGrantPermissions(['Admin']), async function (req, res, next) {
+    const companyName = req.session.selectedGrant.entity.name;
+    // update the data for the company:
+    adminData[companyName] = req.body;
+    // save the data to the file:
+    await fs.writeFile('data/admin.json', JSON.stringify(adminData, null, 2));
+    res.redirect('/admin');
 });
 
 

@@ -1,23 +1,27 @@
+<h1>Admin Settings</h1>
 
-    <h1>Admin Settings</h1>
+<form name="admin-settings" action="/admin" method="post">
     <div class="setting">
-        <label>Enable Feature A</label>
+        <label>Send Random Spam</label>
         <label class="switch">
-            <input type="checkbox">
-                <span class="slider round"></span>
+            <input type="checkbox" value="true" name="spam" {{#if data.spam}} checked {{/if}}>
+            <span class="slider round"></span>
         </label>
     </div>
     <div class="setting">
-        <label>Enable Feature B</label>
+        <label>Endless Followups</label>
         <label class="switch">
-            <input type="checkbox">
-                <span class="slider round"></span>
+            <input type="checkbox" value="true" name="followups" {{#if data.followups}} checked {{/if}}>
+            <span class="slider round"></span>
         </label>
     </div>
     <div class="setting">
-        <label>Enable Feature C</label>
+        <label>A.I Buzzword Generator</label>
         <label class="switch">
-            <input type="checkbox">
-                <span class="slider round"></span>
+            <input type="checkbox" value="true" name="buzzwords" {{#if data.buzzwords}} checked {{/if}}>
+            <span class="slider round"></span>
         </label>
     </div>
+    <br/>
+    <button class="button-lg" type="submit">Save</button>
+</form>
