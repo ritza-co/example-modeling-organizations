@@ -20,26 +20,25 @@
   - [x] Sidebar link icons
   - [x] Clean up stylesheet
   - [x] Styling for table data
-  - [ ] Update "Changebank" logo on FusionAuth signin to be AwesomeCRM (or whatever the company name is)
-- [ ] Functionality
+  - [x] Update "Changebank" logo on FusionAuth signin to be AwesomeCRM (or whatever the company name is)
+- [x] Functionality
   - [x] Add Admin page
-  - [ ] Add user management page
+  - [x] Add user management page
   - [x] Logout link to point to FusionAuth logout (check logout link in FA is pointing back to the app)
-  - [ ] Add POST routes for: 
+  - [x] Add POST routes for: 
     - [x] Users Permissions
-    - [ ] User Grants
+    - [x] User Grants (kinda just works with permissions)
     - [x] Billing
     - [x] Sales
     - [x] Reports
+    - [x] Admins
   - [x] Update how pdfs are secured and downloaded. 
-    - [ ] Mockup pdf reports
+    - [x] Mockup pdf reports
 
-
-- [ ] Kickstart updates
+- [x] Kickstart updates
   - [x] Add URL for profile picture
   - [x] Add other users 
   - [x] Add profile pics to github and reference from there
-  - [x] Try rebuild docker and check users / images / changes. 
+  - [x] Try rebuild docker and check users / images / changes.
 
-
-
+- [x] Add readme file to codebase
