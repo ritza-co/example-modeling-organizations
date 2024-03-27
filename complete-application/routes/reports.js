@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const checkGrantPermissions = require('../permissions');
+const checkGrantPermissions = require('../middleware/checkGrantPermissions');
 const fs = require('fs').promises;
 const multer  = require('multer');
 const upload = multer({ dest: 'data/reports' });

@@ -1,25 +1,25 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 
-var passport = require("passport");
-var OAuth2Strategy = require("passport-oauth2").Strategy;
-var session = require("express-session");
+const passport = require("passport");
+const OAuth2Strategy = require("passport-oauth2").Strategy;
+const session = require("express-session");
 const { ensureLoggedIn } = require('connect-ensure-login');
 const dotenv = require('dotenv');
 dotenv.config();
 
-const checkGrantPermissions = require('./permissions');
 
+const loadGrants = require('./middleware/loadGrants');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var salesRouter = require('./routes/sales');
-var billingRouter = require('./routes/billing');
-var reportsRouter = require('./routes/reports');
-var adminRouter = require('./routes/admin');
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
+const salesRouter = require('./routes/sales');
+const billingRouter = require('./routes/billing');
+const reportsRouter = require('./routes/reports');
+const adminRouter = require('./routes/admin');
 
 const FUSIONAUTH_URL = process.env.FUSIONAUTH_URL;
 const FUSIONAUTH_APP_CLIENTID = process.env.FUSIONAUTH_APP_CLIENTID;
@@ -27,7 +27,7 @@ const FUSIONAUTH_APP_CLIENT_SECRET = process.env.FUSIONAUTH_APP_CLIENT_SECRET;
 const FUSIONAUTH_API_KEY = process.env.FUSIONAUTH_API_KEY;
 const FUSIONAUTH_LOGOUT_URL = process.env.FUSIONAUTH_LOGOUT_URL;
 
-var app = express();
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -43,12 +43,12 @@ app.use(session({ secret: "TOPSECRET" }));
 app.use(passport.initialize());
 app.use(passport.session());
 
+
+app.use(loadGrants);
 app.use(function (req, res, next) {
   req.logoutURL = FUSIONAUTH_LOGOUT_URL;
   next();
 });
-
-
 
 passport.use(
   new OAuth2Strategy(
@@ -68,16 +68,6 @@ passport.use(
           }
         });
         const user = await userResponse.json();
-
-        // Get the entity grants for the user:
-        const grantsResponse = await fetch(`${FUSIONAUTH_URL}/api/entity/grant/search?userId=${user.user.id}`, {
-          headers: {
-            'Authorization': FUSIONAUTH_API_KEY
-          }
-        });
-        const grants = await grantsResponse.json(); 
-
-        user.grants = grants.grants;
         return cb(null, user);
       } catch (err) {
         console.error(err);
@@ -99,12 +89,10 @@ passport.deserializeUser(function (user, done) {
   });
 });
 
-
-
 app.use('/', indexRouter);
 app.get("/login", passport.authenticate("oauth2"));
 app.get("/auth/callback",
-  passport.authenticate("oauth2", { failureRedirect: "/" }),
+  passport.authenticate("oauth2", { failureRedirect: "/" }), loadGrants,
   function (req, res) {
     // Successful authentication, redirect home.
     req.session.selectedGrant = req.user.grants[0];

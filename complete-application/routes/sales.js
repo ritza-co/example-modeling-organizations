@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const checkGrantPermissions = require('../permissions');
+const checkGrantPermissions = require('../middleware/checkGrantPermissions');
 const fs = require('fs');
 
 const salesData = require('../data/sales.json');
