@@ -1,6 +1,18 @@
 <h1>Admin Settings</h1>
 
 <form name="admin-settings" action="/admin" method="post">
+
+    <h4>Company</h4>
+    <input type="text" name="name" value="{{data.name}}" placeholder="Entity Name" required>
+
+    <h4>Address</h4>
+    <input type="text" name="data[address][line1]" value="{{data.data.address.line1}}" placeholder="Address" required>
+    <input type="text" name="data[address][city]" value="{{data.data.address.city}}" placeholder="City" required>
+    <input type="text" name="data[address[state]" value="{{data.data.address.state}}" placeholder="State" required>
+    <input type="text" name="data[address[zip]" value="{{data.data.address.zip}}" placeholder="Zip" required>
+
+
+    <h4>Settings</h4>
     <div class="setting">
         <label>Send Random Spam</label>
         <label class="switch">
@@ -23,5 +35,6 @@
         </label>
     </div>
     <br/>
+    <hr/>
     <button class="button-lg" type="submit">Save</button>
 </form>

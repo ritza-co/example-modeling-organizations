@@ -1,5 +1,5 @@
 {
-  "Hooli": [
+  "00000000-0000-0000-0000-000000000007": [
     {
       "report_id": "HLR001",
       "title": "Financial Performance Q1",
@@ -22,7 +22,7 @@
       "file_url": "/reports/files/HLR003.pdf"
     }
   ],
-  "Aviato": [
+  "00000000-0000-0000-0000-000000000008": [
     {
       "report_id": "AVR001",
       "title": "User Engagement Metrics",
@@ -45,7 +45,7 @@
       "file_url": "/reports/files/AVR003.pdf"
     }
   ],
-  "Pied Piper": [
+  "00000000-0000-0000-0000-000000000006": [
     {
       "report_id": "PPR001",
       "title": "Beta Testing Feedback",

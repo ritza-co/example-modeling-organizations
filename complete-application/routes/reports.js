@@ -10,15 +10,16 @@ const reportData = require('../data/reports.json');
 router.get('/', checkGrantPermissions(['Admin', 'Reports', 'Viewer']), function (req, res, next) {
 
     const companyName = req.session.selectedGrant.entity.name;
+    const companyId = req.session.selectedGrant.entity.id;
     
     // you would load this from a database probably, and most likely with an ID instead of name. 
-    const data = reportData[companyName];
+    const data = reportData[companyId];
 
     res.render('reports', {
         title: companyName + ' - Reports',
         data: data, 
         user: req.user.user,
-        company: req.session.selectedGrant.entity.name,
+        company: companyName,
         logoutURL: req.logoutURL,
         selectedGrant: req.session.selectedGrant
     });
@@ -28,14 +29,15 @@ router.get('/', checkGrantPermissions(['Admin', 'Reports', 'Viewer']), function 
 router.post('/', checkGrantPermissions(['Admin', 'Reports']), upload.single('file_report') ,  async function (req, res, next) {
 
     const companyName = req.session.selectedGrant.entity.name;
+    const companyId = req.session.selectedGrant.entity.id;
     // rename the file to the original name + the unique identifier and put it in the correct company folder
-    const folderPath = `data/reports/${companyName}/`;
+    const folderPath = `data/reports/${companyId}/`;
     const uniqueName = `${req.file.filename}-${req.file.originalname}`;
     await fs.mkdir(folderPath, { recursive: true });
     await fs.rename(req.file.path, `${folderPath}${uniqueName}`);
 
     req.body.file_url = `/reports/files/${uniqueName}`;
-    reportData[companyName].push(req.body);
+    reportData[companyId].push(req.body);
     await fs.writeFile('data/reports.json', JSON.stringify(reportData, null, 2));
     res.redirect('/reports');
 });
@@ -43,7 +45,8 @@ router.post('/', checkGrantPermissions(['Admin', 'Reports']), upload.single('fil
 
 router.get('/files/:file', checkGrantPermissions(['Admin', 'Reports']), async function (req, res, next) {
     const companyName = req.session.selectedGrant.entity.name;
-    const path = `data/reports/${companyName}/${req.params.file}`;
+    const companyId = req.session.selectedGrant.entity.id;
+    const path = `data/reports/${companyId}/${req.params.file}`;
     // Check if the file exists: 
     try {
         await fs.access(path);

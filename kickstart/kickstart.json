@@ -11,14 +11,14 @@
     "adminUserId": "00000000-0000-0000-0000-000000000001",
     "userEmail": "richard@example.com",
     "userPassword": "password",
-    "userRichardId": "00000000-0000-0000-0000-111111111111", 
+    "userRichardId": "00000000-0000-0000-0000-111111111111",
     "userErlichEmail": "erlich@example.com",
     "userErlichId": "00000000-0000-0000-0000-222222222222",
     "userJaredEmail": "jared@example.com",
     "userJaredId": "00000000-0000-0000-0000-333333333333",
     "customerEntityTypeId": "00000000-0000-0000-0000-000000000005",
     "entityIdPiedPiper": "00000000-0000-0000-0000-000000000006",
-    "entityIdHooli": "00000000-0000-0000-0000-000000000007", 
+    "entityIdHooli": "00000000-0000-0000-0000-000000000007",
     "entityIdAviato": "00000000-0000-0000-0000-000000000008"
   },
   "licenseId": "RNrXb56Mpq7EDveYv90v0xHSvwWKX2TmxSQj8prl8",
@@ -49,21 +49,21 @@
           "name": "Customers",
           "permissions": [
             {
-              "name": "Admin", 
-              "description": "This permission allows the User to do anything with the account" 
-            }, 
+              "name": "Admin",
+              "description": "This permission allows the User to do anything with the account"
+            },
             {
-              "name": "Sales", 
+              "name": "Sales",
               "description": "This permission is for salespeople and allows them to do things like create contacts, companies, deals, etc."
-            }, 
+            },
             {
-              "name": "Billing", 
+              "name": "Billing",
               "description": "This permission allows the User to manage billing things like invoices, credit cards, etc."
-            }, 
+            },
             {
               "name": "Reports",
               "description": "This permission allows the User to manage reports"
-            }, 
+            },
             {
               "name": "Viewer",
               "description": "This permission allows the User to view but not touch"
@@ -76,11 +76,19 @@
       "method": "POST",
       "url": "/api/entity/#{entityIdPiedPiper}",
       "body": {
-        "entity" : {
+        "entity": {
           "type": {
             "id": "#{customerEntityTypeId}"
           },
-          "name": "Pied Piper"
+          "name": "Pied Piper",
+          "data": {
+            "address": {
+              "city": "Palo Alto",
+              "line1": "525 Middlefield Rd",
+              "zip": "94301",
+              "state": "CA"
+            }
+          }
         }
       }
     },
@@ -88,11 +96,19 @@
       "method": "POST",
       "url": "/api/entity/#{entityIdHooli}",
       "body": {
-        "entity" : {
+        "entity": {
           "type": {
             "id": "#{customerEntityTypeId}"
           },
-          "name": "Hooli"
+          "name": "Hooli",
+          "data": {
+            "address": {
+              "city": "Mountain View",
+              "line1": "1234 Shoreline Blvd",
+              "zip": "94043",
+              "state": "CA"
+            }
+          }
         }
       }
     },
@@ -100,11 +116,19 @@
       "method": "POST",
       "url": "/api/entity/#{entityIdAviato}",
       "body": {
-        "entity" : {
+        "entity": {
           "type": {
             "id": "#{customerEntityTypeId}"
           },
-          "name": "Aviato"
+          "name": "Aviato", 
+          "data": {
+            "address": {
+              "city": "Palo Alto",
+              "line1": "525 Middlefield Rd",
+              "zip": "94301",
+              "state": "CA"
+            }
+          }
         }
       }
     },
@@ -131,8 +155,8 @@
           "jwtConfiguration": {
             "enabled": true,
             "accessTokenKeyId": "#{asymmetricKeyId}",
-            "idTokenKeyId": "#{asymmetricKeyId}", 
-            "timeToLiveInSeconds" : 300
+            "idTokenKeyId": "#{asymmetricKeyId}",
+            "timeToLiveInSeconds": 300
           }
         }
       }
@@ -172,7 +196,7 @@
           "email": "#{userEmail}",
           "firstName": "Richard",
           "lastName": "Hendricks",
-          "password": "#{userPassword}", 
+          "password": "#{userPassword}",
           "imageUrl": "http://localhost:3000/images/richard-hendricks-small-profile.png"
         },
         "registration": {

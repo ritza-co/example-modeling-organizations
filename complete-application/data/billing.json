@@ -1,5 +1,5 @@
 {
-  "Hooli": [
+  "00000000-0000-0000-0000-000000000007": [
     {
       "invoice_number": "HL1234",
       "client_name": "BigData Corp",
@@ -19,7 +19,7 @@
       "amount": 100000
     }
   ],
-  "Aviato": [
+  "00000000-0000-0000-0000-000000000008": [
     {
       "invoice_number": "AVI5678",
       "client_name": "DroneX",
@@ -39,7 +39,7 @@
       "amount": 2000
     }
   ],
-  "Pied Piper": [
+  "00000000-0000-0000-0000-000000000006": [
     {
       "invoice_number": "PP91011",
       "client_name": "TechGear Ltd",

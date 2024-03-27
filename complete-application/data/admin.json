@@ -1,14 +1,14 @@
 {
-  "Hooli": {
+  "00000000-0000-0000-0000-000000000007": {
     "spam": false,
     "followups": false,
     "buzzwords": false
   },
-  "Pied Piper": {
+  "00000000-0000-0000-0000-000000000006": {
     "spam": "true",
     "followups": "true"
   },
-  "Aviato": {
+  "00000000-0000-0000-0000-000000000008": {
     "spam": false,
     "followups": false,
     "buzzwords": false

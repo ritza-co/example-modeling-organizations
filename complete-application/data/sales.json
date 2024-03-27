@@ -1,5 +1,5 @@
 {
-  "Hooli": [
+  "00000000-0000-0000-0000-000000000007": [
     {
       "product": "Compression Algorithm",
       "price": 1000000,
@@ -25,7 +25,7 @@
       "total": 9200
     }
   ],
-  "Aviato": [
+  "00000000-0000-0000-0000-000000000008": [
     {
       "product": "Aviato App Subscription",
       "price": 10,
@@ -45,7 +45,7 @@
       "total": 2000
     }
   ],
-  "Pied Piper": [
+  "00000000-0000-0000-0000-000000000006": [
     {
       "product": "Middle-out Compression Platform",
       "price": 100000,
