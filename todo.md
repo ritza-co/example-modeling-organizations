@@ -40,7 +40,8 @@
   - [x] Update all pages to use entityId instead of names
       - [x] Update data files to use EntityId instead of names
       - [x] Update report folders to use EntityId instead of names
-      - [ ] Test updates
+      - [x] Test updates
+        - [ ] Update code / names for company logos
 
 
 - [x] Kickstart updates

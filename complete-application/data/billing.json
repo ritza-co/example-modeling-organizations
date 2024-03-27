@@ -63,6 +63,12 @@
       "client_name": "Bob Banana",
       "date": "2024-03-10",
       "amount": "63000"
+    },
+    {
+      "invoice_number": "PP2382734",
+      "client_name": "Appl",
+      "date": "2023-12-03",
+      "amount": "23434"
     }
   ]
 }

@@ -18,6 +18,7 @@ router.get('/', checkGrantPermissions(['Admin', 'Sales', 'Viewer']), function (r
         data: data, 
         user: req.user.user,
         company: companyName,
+        companyId: companyId,
         logoutURL: req.logoutURL,
         selectedGrant: req.session.selectedGrant
     });
@@ -28,7 +29,7 @@ router.post('/', checkGrantPermissions(['Admin', 'Sales']), function (req, res, 
     // Get the data from the request body, and add the new row to the data file
     const companyName = req.session.selectedGrant.entity.name;
     const companyId = req.session.selectedGrant.entity.id;
-    
+
     req.body.total = req.body.price * req.body.quantity;
     salesData[companyId].push(req.body);
     // Save the data to the file

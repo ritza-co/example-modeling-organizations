@@ -92,7 +92,8 @@ router.get('/', checkGrantPermissions(['Admin', 'Viewer']), async function (req,
     logoutURL: req.logoutURL,
     selectedGrant: req.session.selectedGrant,
     allPermissions: req.session.selectedGrant.entity.type.permissions,
-    company: req.session.selectedGrant.entity.name
+    company: req.session.selectedGrant.entity.name,
+    companyId : req.session.selectedGrant.entity.id
   });
 
 });

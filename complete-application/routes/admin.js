@@ -32,6 +32,7 @@ router.get('/', checkGrantPermissions(['Admin']), async function (req, res, next
         title: companyName + ' - Admin',
         user: req.user.user,
         company: req.session.selectedGrant.entity.name,
+        companyId: req.session.selectedGrant.entity.id,
         logoutURL: req.logoutURL,
         selectedGrant: req.session.selectedGrant,
         data: entity.entity

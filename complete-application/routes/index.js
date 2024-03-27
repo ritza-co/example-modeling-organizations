@@ -20,6 +20,7 @@ router.get('/', function(req, res, next) {
       user: user.user, 
       companies: companies, 
       company: req.session.selectedGrant.entity.name,
+      companyId: req.session.selectedGrant.entity.id,
       logoutURL: req.logoutURL,
       selectedGrant: req.session.selectedGrant
     });

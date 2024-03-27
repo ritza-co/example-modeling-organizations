@@ -20,6 +20,7 @@ router.get('/', checkGrantPermissions(['Admin', 'Reports', 'Viewer']), function 
         data: data, 
         user: req.user.user,
         company: companyName,
+        companyId: companyId,
         logoutURL: req.logoutURL,
         selectedGrant: req.session.selectedGrant
     });
