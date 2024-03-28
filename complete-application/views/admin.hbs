@@ -1,40 +1,54 @@
 <h1>Admin Settings</h1>
 
-<form name="admin-settings" action="/admin" method="post">
-
-    <h4>Company</h4>
-    <input type="text" name="name" value="{{data.name}}" placeholder="Entity Name" required>
-
-    <h4>Address</h4>
-    <input type="text" name="data[address][line1]" value="{{data.data.address.line1}}" placeholder="Address" required>
-    <input type="text" name="data[address][city]" value="{{data.data.address.city}}" placeholder="City" required>
-    <input type="text" name="data[address[state]" value="{{data.data.address.state}}" placeholder="State" required>
-    <input type="text" name="data[address[zip]" value="{{data.data.address.zip}}" placeholder="Zip" required>
+<div class="input-form">
+    <form name="admin-settings" action="/admin" method="post">
 
 
-    <h4>Settings</h4>
-    <div class="setting">
-        <label>Send Random Spam</label>
-        <label class="switch">
-            <input type="checkbox" value="true" name="spam" {{#if data.spam}} checked {{/if}}>
-            <span class="slider round"></span>
-        </label>
-    </div>
-    <div class="setting">
-        <label>Endless Followups</label>
-        <label class="switch">
-            <input type="checkbox" value="true" name="followups" {{#if data.followups}} checked {{/if}}>
-            <span class="slider round"></span>
-        </label>
-    </div>
-    <div class="setting">
-        <label>A.I Buzzword Generator</label>
-        <label class="switch">
-            <input type="checkbox" value="true" name="buzzwords" {{#if data.buzzwords}} checked {{/if}}>
-            <span class="slider round"></span>
-        </label>
-    </div>
-    <br/>
-    <hr/>
-    <button class="button-lg" type="submit">Save</button>
-</form>
+        <label for="name">Company Name</label>
+        <input type="text" name="name" value="{{data.name}}" placeholder="Entity Name" required>
+
+
+        <label for="address">Street</label>
+        <input type="text" name="data[address][street]" value="{{data.data.address.street}}" placeholder="Address"
+            required>
+
+        <label for="city">City</label>
+        <input type="text" name="data[address][city]" value="{{data.data.address.city}}" placeholder="City" required>
+
+        <label for="state">State</label>
+        <input type="text" name="data[address][state]" value="{{data.data.address.state}}" placeholder="State" required>
+
+        <label for="zip">Zip</label>
+        <input type="text" name="data[address][zip]" value="{{data.data.address.zip}}" placeholder="Zip" required>
+
+        <br />
+        <hr />
+        <button class="button-lg" type="submit">Save</button>
+    </form>
+</div>
+
+
+
+
+{{!-- <h4>Settings</h4>
+<div class="setting">
+    <label>Send Random Spam</label>
+    <label class="switch">
+        <input type="checkbox" value="true" name="spam" {{#if data.spam}} checked {{/if}}>
+        <span class="slider round"></span>
+    </label>
+</div>
+<div class="setting">
+    <label>Endless Followups</label>
+    <label class="switch">
+        <input type="checkbox" value="true" name="followups" {{#if data.followups}} checked {{/if}}>
+        <span class="slider round"></span>
+    </label>
+</div>
+<div class="setting">
+    <label>A.I Buzzword Generator</label>
+    <label class="switch">
+        <input type="checkbox" value="true" name="buzzwords" {{#if data.buzzwords}} checked {{/if}}>
+        <span class="slider round"></span>
+    </label>
+</div> --}}

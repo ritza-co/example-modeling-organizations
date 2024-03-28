@@ -3,12 +3,7 @@ const router = express.Router();
 const fs = require('fs').promises;
 const checkGrantPermissions = require('../middleware/checkGrantPermissions');
 
-const adminData = require('../data/admin.json');
-
-
 const FUSIONAUTH_URL = process.env.FUSIONAUTH_URL;
-const FUSIONAUTH_APP_CLIENTID = process.env.FUSIONAUTH_APP_CLIENTID;
-const FUSIONAUTH_APP_CLIENT_SECRET = process.env.FUSIONAUTH_APP_CLIENT_SECRET;
 const FUSIONAUTH_API_KEY = process.env.FUSIONAUTH_API_KEY;
 
 
@@ -45,8 +40,8 @@ router.post('/', checkGrantPermissions(['Admin']), async function (req, res, nex
 
     // Update the entity with the new data
 
-    let updates = req.body;
-    updates = {
+    
+    const updates = {
         entity: req.body
     }
 

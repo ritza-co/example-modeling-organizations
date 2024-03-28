@@ -120,7 +120,7 @@ html {
 #content {
     flex-grow: 1;
     background: var(--tertiary-color);
-    height: auto;
+    min-height: fit-content;
 }
 
 #content-inner {

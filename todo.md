@@ -24,8 +24,9 @@
 - [x] Functionality
   - [x] Add Admin page
     - [x] Update to use attributes from FusionAuth entities
-    - [ ] Fix hbs input names
-    - [ ] Styling for input fields on form (add labels etc)
+    - [x] Fix hbs input names
+    - [x] Styling for input fields on form (add labels etc)
+    - [ ] Update kickstarter to use "street" instead on "line1"
   - [x] Add user management page
   - [x] Logout link to point to FusionAuth logout (check logout link in FA is pointing back to the app)
   - [x] Add POST routes for: 
@@ -41,7 +42,8 @@
       - [x] Update data files to use EntityId instead of names
       - [x] Update report folders to use EntityId instead of names
       - [x] Test updates
-        - [ ] Update code / names for company logos
+        - [x] Update code / names for company logos
+        - [x] Update grant loading to be dynamic (so company name changes etc update properly)
 
 
 - [x] Kickstart updates
