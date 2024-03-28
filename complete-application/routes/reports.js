@@ -29,7 +29,6 @@ router.get('/', checkGrantPermissions(['Admin', 'Reports', 'Viewer']), function 
 
 router.post('/', checkGrantPermissions(['Admin', 'Reports']), upload.single('file_report') ,  async function (req, res, next) {
 
-    const companyName = req.session.selectedGrant.entity.name;
     const companyId = req.session.selectedGrant.entity.id;
     // rename the file to the original name + the unique identifier and put it in the correct company folder
     const folderPath = `data/reports/${companyId}/`;
@@ -45,7 +44,6 @@ router.post('/', checkGrantPermissions(['Admin', 'Reports']), upload.single('fil
 
 
 router.get('/files/:file', checkGrantPermissions(['Admin', 'Reports']), async function (req, res, next) {
-    const companyName = req.session.selectedGrant.entity.name;
     const companyId = req.session.selectedGrant.entity.id;
     const path = `data/reports/${companyId}/${req.params.file}`;
     // Check if the file exists: 

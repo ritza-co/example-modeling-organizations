@@ -26,7 +26,6 @@ router.get('/', checkGrantPermissions(['Admin', 'Billing', 'Viewer']), function 
 
 
 router.post('/', checkGrantPermissions(['Admin', 'Billing']), function (req, res, next) {
-    const companyName = req.session.selectedGrant.entity.name;
     const companyId = req.session.selectedGrant.entity.id;
     billingData[companyId].push(req.body);
     fs.writeFileSync('data/billing.json', JSON.stringify(billingData, null, 2));

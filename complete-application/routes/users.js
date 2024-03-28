@@ -1,12 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const checkGrantPermissions = require('../middleware/checkGrantPermissions');
-const querystring = require('querystring');
-const e = require('express');
 
 const FUSIONAUTH_URL = process.env.FUSIONAUTH_URL;
-const FUSIONAUTH_APP_CLIENTID = process.env.FUSIONAUTH_APP_CLIENTID;
-const FUSIONAUTH_APP_CLIENT_SECRET = process.env.FUSIONAUTH_APP_CLIENT_SECRET;
 const FUSIONAUTH_API_KEY = process.env.FUSIONAUTH_API_KEY;
 
 /* GET users listing. */
@@ -73,7 +69,7 @@ router.get('/', checkGrantPermissions(['Admin', 'Viewer']), async function (req,
     });
     const grants = await grantsResponse.json();
     // Only include the grants for the selected entity (company)
-    userGrants = grants.grants.find(grant => grant.entity.id === req.session.selectedGrant.entity.id);
+    const userGrants = grants.grants.find(grant => grant.entity.id === req.session.selectedGrant.entity.id);
 
     // make a list of all permissions, and mark the ones the user has:
     user.permissions = allPermissions.map(perm => {

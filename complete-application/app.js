@@ -24,7 +24,6 @@ const adminRouter = require('./routes/admin');
 const FUSIONAUTH_URL = process.env.FUSIONAUTH_URL;
 const FUSIONAUTH_APP_CLIENTID = process.env.FUSIONAUTH_APP_CLIENTID;
 const FUSIONAUTH_APP_CLIENT_SECRET = process.env.FUSIONAUTH_APP_CLIENT_SECRET;
-const FUSIONAUTH_API_KEY = process.env.FUSIONAUTH_API_KEY;
 const FUSIONAUTH_LOGOUT_URL = process.env.FUSIONAUTH_LOGOUT_URL;
 
 const app = express();

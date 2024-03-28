@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const fs = require('fs').promises;
 const checkGrantPermissions = require('../middleware/checkGrantPermissions');
 
 const FUSIONAUTH_URL = process.env.FUSIONAUTH_URL;
